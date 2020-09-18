@@ -6,9 +6,6 @@ from student_app.models import Student
 @app.route('/')
 @app.route('/list')
 def list():
-    # print(Student.query.all())
-    # for s in Student.query.all():
-        # print (s.name)
     return  render_template('list.html', students=Student.query.all())
 
 @app.route('/add')
@@ -18,14 +15,11 @@ def add_get():
 
 @app.route('/add', methods=["POST"])
 def add_post():
-  
     data = request.json
-    # print("data",request.json)
     student = Student(**data)
     db.session.add(student)
     db.session.commit()
-
-    return jsonify({"msg": "Add Successfully", "status":202})
+    return jsonify({"msg": "Add Successfully", "status":200})
     
         
 
@@ -60,21 +54,14 @@ def detail_get(id_):
 
 @app.route('/edit', methods=["POST"])
 def edit_post():
-    # id_=int(request.json["id_"])
     data = request.json
-    # print("data",request.json)
-    # student = Student(**data)
     db.session.query(Student).filter_by(id_=data["id_"]).update(data)
-    # db.session.add(data)
     db.session.commit()
-
-    return jsonify({"msg": "Edit Successfully", "status":202})
+    return jsonify({"msg": "Edit Successfully", "status":200})
 
 
 @app.route('/delete/<id_>')
 def delete_get(id_):
-    
     student = Student.query.filter_by(id_=id_).delete()
     db.session.commit()
-
     return jsonify({"msg": "Delete Successfully", "status":202})
