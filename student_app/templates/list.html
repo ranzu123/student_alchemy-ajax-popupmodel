@@ -194,7 +194,6 @@
 
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <!-- <script type="text/javascript" src="js/bootstrap.js"></script> -->
     <script type="text/javascript">
         // To post add in list page 
         function add_post(){
@@ -220,7 +219,7 @@
                     console.log(response)
                     alert(response.msg)
                     location.reload();
-                    // window.location.href = "/list"
+                    
             
                 }).fail(function (jqXHR, textStatus )  {
                         //error log
@@ -230,22 +229,6 @@
             }
 
 
-        // To make radio button load while edit our data
-        // var section = "{{section}}";
-        //     if (section == 'A'){
-        //         document.getElementById("section_A").checked = true;
-        //     }
-        //     else{
-        //         document.getElementById("section_B").checked = true;
-        //     }
-            
-        // var section = "{{gender}}";
-        //     if (section == 'M'){
-        //         document.getElementById("gender_M").checked = true;
-        //     }
-        //     else{
-        //         document.getElementById("gender_F").checked = true;
-        //     }
         
         // This function make data load in form while we click in edit button 
        
@@ -285,8 +268,7 @@
                     $("#edttxtAddress").val(response.address);
                     $("#edttxtParent").val(response.parent_name);
                     $("#studentEditModal").modal('show')
-                // alert(response.msg)
-                // window.location.href = "/list"
+            
     
             }).fail(function (jqXHR, textStatus )  {
                 //error log
@@ -337,7 +319,7 @@
                 console.log(response)
                 alert(response.msg)
                 location.reload();
-                // window.location.href = "/list"
+                
     
             }).fail(function (jqXHR, textStatus )  {
                 //error log
@@ -347,18 +329,6 @@
         }    
         // This function delete the row which you selected
         function delete_get(id_){
-            // var student_data = {
-            //             "name"       :  $("#txtName").val(),
-            //             "grade"      :  $("#txtGrade").val(),
-            //             "faculty"    :  $("#txtFaculty").val(),
-            //             "section"    :  $("#btnSection").val(),
-            //             "roll_no"    :  $("#txtRoll").val(),
-            //             "age"        :  $("#txtAge").val(),
-            //             "gender"     :  $("#btnGender").val(),
-            //             "address"    :  $("#txtAddress").val(),
-            //             "parent_name":  $("#txtParent").val()
-            //         }
-            //     console.log(student_data)
             $.ajax({
                 type: "GET",
                 url: '/delete/' + id_,
